@@ -330,6 +330,8 @@ p {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -525,6 +527,20 @@ p {
     animation-play-state: running;
     z-index: 10;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Section Styles */
 .section-header {
@@ -893,12 +909,11 @@ p {
     height: 100%;
     object-fit: cover;
     transition: all 0.4s ease;
-    filter: grayscale(100%);
+    filter: grayscale(0%);
 }
 
 .portfolio-item:hover .portfolio-image img {
     transform: scale(1.1);
-    filter: grayscale(0%);
 }
 
 .portfolio-overlay {
@@ -1223,10 +1238,52 @@ p {
         transform: translateY(-50%);
         width: 50px;
         height: 50px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -webkit-transform: translateY(-50%);
+        -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
     }
     
     .theme-toggle i {
         font-size: 1.4rem;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .theme-toggle:hover {
+        transform: translateY(-50%) scale(1.1);
+        -webkit-transform: translateY(-50%) scale(1.1);
+    }
+    
+    .theme-toggle:hover i {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+    }
+    
+    /* Touch device optimizations */
+    .theme-toggle:active {
+        transform: translateY(-50%) scale(0.95);
+        -webkit-transform: translateY(-50%) scale(0.95);
+    }
+    
+    .theme-toggle:active i {
+        transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+    }
+    
+    /* Remove any conflicting shadows */
+    .theme-toggle {
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+    }
+    
+    .theme-toggle:hover {
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3) !important;
+        -webkit-box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3) !important;
     }
     
     .hamburger {
@@ -1256,13 +1313,105 @@ p {
     }
 
     .hero {
-        padding-top: 120px;
+        padding-top: 100px !important;
+        min-height: auto;
+        padding-bottom: 6rem;
+        margin-top: 80px !important;
+    }
+    
+    
+    
+
+    
+    .about {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-buttons {
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Fix button outline/cadre issue on mobile */
+    .btn, .btn-primary, .btn-secondary, button, a {
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    
+    .btn:focus, .btn-primary:focus, .btn-secondary:focus, button:focus, a:focus {
+        outline: none;
+        -webkit-outline: none;
+    }
+    
+    .btn:active, .btn-primary:active, .btn-secondary:active, button:active, a:active {
+        outline: none;
+        -webkit-outline: none;
+        transform: scale(0.98);
+        -webkit-transform: scale(0.98);
+    }
+    
+    /* Portfolio filter buttons specific fixes */
+    .filter-btn {
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-appearance: none;
+        appearance: none;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .filter-btn:focus {
+        outline: none;
+        -webkit-outline: none;
+    }
+    
+    .filter-btn:active {
+        outline: none;
+        -webkit-outline: none;
+        transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+    }
+    
+    .filter-btn:hover {
+        transform: translateY(-2px) scale(1.02);
+        -webkit-transform: translateY(-2px) scale(1.02);
     }
     
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
     }
+    
+    .hero-image {
+        display: none;
+    }
+    
+
 
     .hero-title {
         font-size: 2.5rem;
@@ -1272,6 +1421,8 @@ p {
         grid-template-columns: 1fr;
         text-align: center;
     }
+    
+
     
     .about-brief {
         display: block;
@@ -1308,9 +1459,54 @@ p {
     }
 
     .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem;
+        max-width: 450px;
+        margin: 0 auto;
     }
+    
+
+    
+    .portfolio-item {
+        min-height: 350px;
+        aspect-ratio: 16/10;
+    }
+    
+
+    
+    .portfolio-image img {
+        filter: grayscale(0%) !important;
+        transform: scale(1.02);
+    }
+    
+    .portfolio-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        color: white;
+        font-weight: 700;
+    }
+    
+    .portfolio-content p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 1.2rem;
+    }
+    
+    .portfolio-link {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+        border-radius: 20px;
+        color: white;
+        border: 2px solid white;
+        font-weight: 600;
+    }
+    
+    .portfolio-link:hover {
+        background: white;
+        color: #0066cc;
+    }
+    
+
     
     .filter-buttons {
         flex-direction: column;
@@ -1375,15 +1571,10 @@ p {
         flex-direction: column;
         align-items: center;
     }
+    
 
-    .floating-card {
-        padding: 1rem;
-        font-size: 0.9rem;
-    }
 
-    .floating-card i {
-        font-size: 1.5rem;
-    }
+
 }
 
 /* Animations */
