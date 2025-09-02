@@ -111,6 +111,28 @@ serviceCards.forEach(card => {
     card.style.transform = 'translateY(30px)';
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     cardObserver.observe(card);
+    
+    // Add click functionality for mobile service cards
+    card.addEventListener('click', function() {
+        // Only apply this on mobile devices
+        if (window.innerWidth <= 768) {
+            const isExpanded = this.classList.contains('expanded');
+            
+            // Remove expanded class from all other cards
+            serviceCards.forEach(otherCard => {
+                if (otherCard !== this) {
+                    otherCard.classList.remove('expanded');
+                }
+            });
+            
+            // Toggle expanded state for clicked card
+            if (isExpanded) {
+                this.classList.remove('expanded');
+            } else {
+                this.classList.add('expanded');
+            }
+        }
+    });
 });
 
 // Animate portfolio items on scroll
